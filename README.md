@@ -36,7 +36,7 @@ Siga os passos abaixo para configurar e executar o projeto localmente.
 No terminal, clone este repositório e navegue até o diretório do projeto:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/sportify-frontend-react.git
+git clone https://github.com/SEU_USUARIO/sportify-frontend.git
 cd sportify-frontend-react
 ```
 
