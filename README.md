@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Sportify - Rede Social para Atletas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao **Sportify**, uma plataforma de rede social criada para atletas de alto rendimento. O projeto permite que atletas, agências e patrocinadores se conectem, compartilhem suas conquistas, organizem eventos, e gerenciem suas carreiras.
 
-## Available Scripts
+Este projeto contém o frontend desenvolvido em React e um backend em Java Spring (configurado separadamente), e está estruturado para funcionar em conjunto com um banco de dados relacional.
 
-In the project directory, you can run:
+## Índice
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Configuração do Backend](#configuração-do-backend)
+- [Iniciando o Projeto](#iniciando-o-projeto)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Contribuição](#contribuição)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pré-requisitos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Antes de começar, você precisará das seguintes ferramentas instaladas em seu sistema:
+- **Node.js** e **npm**: Para verificar a instalação, execute `node -v` e `npm -v`.
+- **Java** e **Spring Boot** (para o backend).
+- **Oracle Database** ou outro banco de dados relacional compatível (para o backend).
 
-### `npm test`
+> **Observação**: Este repositório contém apenas o frontend. Certifique-se de configurar o backend em um repositório separado.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Instalação
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Siga os passos abaixo para configurar e executar o projeto localmente.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone o Repositório
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+No terminal, clone este repositório e navegue até o diretório do projeto:
 
-### `npm run eject`
+```bash
+git clone https://github.com/SEU_USUARIO/sportify-frontend-react.git
+cd sportify-frontend-react
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Instale as Dependências
+Para instalar todas as dependências listadas no package.json, execute:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Isso abrirá o projeto em modo de desenvolvimento em seu navegador, acessível em http://localhost:3000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Possíveis Problemas
 
-## Learn More
+- Erro de Conexão: Certifique-se de que o backend está rodando e acessível em http://localhost:8080.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Porta em Uso: Se a porta 3000 já estiver em uso, execute o React em outra porta:
+PORT=3001 npm start
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - No Windows, use set PORT=3001 && npm start.
+ 
+### 4. Estrutura do Projeto
 
-### Code Splitting
+A estrutura de pastas do projeto é organizada para facilitar a manutenção e a escalabilidade.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+sportify-frontend-react/
+├── public/                 # Arquivos públicos, incluindo index.html e o logo
+├── src/                    # Código-fonte principal
+│   ├── components/         # Componentes de interface (Cadastro, Login, Consulta, Perfil)
+│   ├── App.js              # Componente principal da aplicação
+│   ├── App.css             # Estilos globais da aplicação
+│   └── index.js            # Arquivo principal de renderização do React
+├── .gitignore              # Arquivos ignorados pelo Git
+├── package.json            # Dependências e scripts npm
+└── README.md               # Documentação do projeto
 
-### Analyzing the Bundle Size
+### 5. Funcionalidades Principais:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Cadastro de Atleta: Usuários podem se cadastrar fornecendo dados como nome de usuário, nome completo, data de nascimento, esporte, gênero, e (opcionalmente) agência e equipe.
 
-### Making a Progressive Web App
+- Login: Autenticação de usuários com nome de usuário e senha.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Consulta de Atleta por Esporte: Permite visualizar uma lista de atletas cadastrados em determinado esporte.
 
-### Advanced Configuration
+- Perfil do Atleta: Cada usuário pode visualizar e atualizar suas informações de perfil, incluindo agência e equipe.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 6. Tecnologias Utilizadas
 
-### Deployment
+- Frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  - React: Biblioteca JavaScript para construção de interfaces de usuário.
+  - Axios: Biblioteca para fazer requisições HTTP para o backend.
+  - CSS Modules: Estilização modular e isolada para os componentes.
+  
+- Backend (Separado):
 
-### `npm run build` fails to minify
+  - Java e Spring Boot: Framework para construção de aplicações web em Java.
+  - Banco de Dados Oracle: Sistema de banco de dados relacional para armazenar os dados dos atletas.
+  - SQL Developer: Ferramenta utilizada para gerenciar o banco de dados Oracle e construir o esquema SQL.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 7. Contribuição
+
+Contribuições são bem-vindas! Para contribuir:
+
+- Faça um fork deste repositório.
+- Crie uma branch para sua feature ou correção (git checkout -b feature/nova-feature).
+- Commit suas mudanças (git commit -m 'Adiciona nova feature').
+- Push para a branch (git push origin feature/nova-feature).
+- Abra um Pull Request.
