@@ -1,44 +1,73 @@
+/* 
+.cadastroContainer
+Este seletor estiliza o contêiner principal do formulário de cadastro de atleta. 
+Fornece um layout centralizado com um plano de fundo suave, bordas arredondadas e uma leve sombra.
+*/
 .cadastroContainer {
-    background-color: #f4f6f9;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
+    background-color: #f4f6f9;         /* Cor de fundo cinza claro */
+    padding: 2rem;                     /* Espaçamento interno para separar o conteúdo das bordas */
+    border-radius: 8px;                /* Bordas arredondadas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para profundidade */
+    max-width: 400px;                  /* Largura máxima do contêiner */
+    margin: auto;                      /* Centraliza o contêiner na página */
+    text-align: center;                /* Centraliza o texto e os elementos dentro do contêiner */
 }
 
+/* 
+.input
+Estiliza os campos de entrada de dados no formulário, incluindo ajustes de largura, espaçamento e bordas.
+Oferece uma aparência uniforme e fácil de interagir.
+*/
 .input {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    width: 100%;                       /* Define a largura do input para ocupar todo o contêiner */
+    padding: 0.8rem;                   /* Espaçamento interno para aumentar a área de clique */
+    margin: 0.5rem 0;                  /* Margem vertical para espaçar os inputs */
+    border-radius: 4px;                /* Bordas arredondadas para suavizar a aparência */
+    border: 1px solid #ccc;            /* Borda cinza clara */
+    font-size: 1rem;                   /* Tamanho da fonte padrão para legibilidade */
 }
 
+/* 
+.button
+Define o estilo do botão de cadastro. Tem uma cor de fundo azul com texto branco e um efeito de transição ao passar o mouse (hover).
+*/
 .button {
-    background-color: #3498db;
-    color: white;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    background-color: #3498db;         /* Cor de fundo azul do botão */
+    color: white;                      /* Cor do texto do botão em branco */
+    padding: 0.8rem;                   /* Espaçamento interno para maior área de clique */
+    border: none;                      /* Remove a borda padrão do botão */
+    border-radius: 4px;                /* Bordas arredondadas */
+    width: 100%;                       /* Largura do botão ocupa todo o contêiner */
+    cursor: pointer;                   /* Cursor de ponteiro ao passar o mouse */
+    font-size: 1rem;                   /* Tamanho da fonte padrão */
+    transition: background-color 0.3s; /* Efeito de transição suave ao passar o mouse */
 }
 
+/* 
+.button:hover
+Estilo do botão ao passar o mouse (hover). A cor de fundo muda para um tom de azul mais escuro,
+dando um efeito visual de destaque.
+*/
 .button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9;         /* Tom mais escuro de azul no hover */
 }
 
+/* 
+.message
+Estiliza a mensagem de feedback ao usuário, como uma mensagem de sucesso ou erro. 
+Utiliza uma cor verde para mensagens de sucesso e permite uma variante vermelha para mensagens de erro.
+*/
 .message {
-    font-size: 1rem;
-    color: #2ecc71;
-    margin-top: 1rem;
+    font-size: 1rem;                   /* Tamanho da fonte da mensagem */
+    color: #2ecc71;                    /* Cor verde para mensagem de sucesso */
+    margin-top: 1rem;                  /* Espaçamento acima da mensagem */
 }
 
+/* 
+.message.error
+Classe para mensagens de erro, que altera a cor da mensagem para vermelho, 
+indicando ao usuário que algo deu errado.
+*/
 .message.error {
-    color: #e74c3c;
+    color: #e74c3c;                    /* Cor vermelha para mensagens de erro */
 }

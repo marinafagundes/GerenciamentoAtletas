@@ -1,50 +1,73 @@
-/* Importa a fonte League Gothic do Google Fonts */
+/* 
+@import
+Importa a fonte 'League Gothic' do Google Fonts para ser utilizada na aplicação. 
+Esta fonte é aplicada a toda a página, conferindo uma estética consistente e estilizada.
+*/
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
-/* Estilos globais */
+/* 
+Estilos globais
+Aplicam-se a todos os elementos da página. As propriedades abaixo garantem que os elementos 
+sejam exibidos de maneira limpa e consistente, sem margens ou preenchimentos extras, 
+e com uma tipografia uniforme baseada na fonte 'League Gothic'.
+*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'League Gothic', Arial, sans-serif;
+    margin: 0;                            /* Remove margens padrão de todos os elementos */
+    padding: 0;                           /* Remove o preenchimento padrão de todos os elementos */
+    box-sizing: border-box;               /* Garante que o padding e border sejam contabilizados dentro das dimensões dos elementos */
+    font-family: 'League Gothic', Arial, sans-serif; /* Aplica a fonte 'League Gothic' a todos os elementos da página */
 }
 
-/* Contêiner principal da aplicação */
+/* 
+.appContainer
+Define o estilo do contêiner principal da aplicação. A cor de fundo é suave para proporcionar contraste com os elementos internos. 
+É configurado para ocupar 100% da altura da tela, permitindo uma aparência responsiva e alinhada ao centro.
+*/
 .appContainer {
-    background-color: #f4f6f9;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #f4f6f9;            /* Define uma cor de fundo clara e suave */
+    min-height: 100vh;                     /* Garante que o contêiner ocupe pelo menos 100% da altura da janela */
+    display: flex;                         /* Utiliza o Flexbox para alinhar o conteúdo de forma flexível */
+    flex-direction: column;                /* Organiza os elementos filhos na direção vertical */
+    align-items: center;                   /* Alinha os itens centralizados horizontalmente */
 }
 
-/* Estiliza o conteúdo de cada seção, como Cadastro e Consulta */
+/* 
+.sectionContent
+Aplica estilo ao conteúdo de cada seção da aplicação (como Cadastro e Consulta). O estilo é projetado para fornecer clareza visual e destaque para as seções.
+*/
 .sectionContent {
-    margin-top: 2rem;
-    width: 100%;
-    max-width: 800px;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;                     /* Define um espaço entre o topo da página e a seção */
+    width: 100%;                          /* A largura da seção ocupa 100% do contêiner pai */
+    max-width: 800px;                     /* Limita a largura máxima da seção para 800px, garantindo legibilidade */
+    padding: 2rem;                        /* Adiciona um espaçamento interno confortável */
+    background-color: #ffffff;            /* Define o fundo da seção como branco */
+    border-radius: 8px;                   /* Arredonda as bordas da seção */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave para destacar a seção */
+    text-align: center;                   /* Centraliza o texto dentro da seção */
 }
 
-/* Estilo para os títulos */
+/* 
+h1, h2, h3
+Define o estilo dos títulos principais da aplicação. A cor do texto é escolhida para ser de fácil leitura e contraste com o fundo.
+*/
 h1, h2, h3 {
-    font-size: 1.5rem;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;                    /* Define o tamanho da fonte para os títulos */
+    color: #2c3e50;                       /* Aplica uma cor escura para os títulos, promovendo contraste */
+    text-align: center;                   /* Centraliza os títulos */
+    margin-bottom: 1rem;                  /* Adiciona um espaço abaixo de cada título */
 }
 
-/* Responsividade básica para dispositivos menores */
+/* 
+Responsividade
+Este bloco ajusta o estilo da página para dispositivos com largura máxima de 600px, garantindo uma visualização otimizada em dispositivos móveis.
+*/
 @media (max-width: 600px) {
     .sectionContent {
-        padding: 1rem;
-        margin-top: 1rem;
+        padding: 1rem;                    /* Reduz o espaçamento interno da seção */
+        margin-top: 1rem;                 /* Diminui o espaço superior da seção */
     }
 
     h1, h2, h3 {
-        font-size: 1.3rem;
+        font-size: 1.3rem;                /* Ajusta o tamanho da fonte dos títulos para dispositivos menores */
     }
 }

@@ -1,54 +1,87 @@
+/* 
+.consultaContainer
+Este seletor estiliza o contêiner principal da consulta de atletas, definindo um layout centralizado com um plano de fundo suave, bordas arredondadas e uma sombra leve. 
+*/
 .consultaContainer {
-    background-color: #f4f6f9;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
+    background-color: #f4f6f9;         /* Cor de fundo cinza claro */
+    padding: 2rem;                     /* Espaçamento interno que separa o conteúdo das bordas */
+    border-radius: 8px;                /* Bordas arredondadas para suavizar a aparência */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para profundidade */
+    max-width: 400px;                  /* Define a largura máxima do contêiner */
+    margin: auto;                      /* Centraliza o contêiner horizontalmente */
+    text-align: center;                /* Centraliza o texto e elementos internos */
 }
 
+/* 
+.input
+Estiliza os campos de entrada, ajustando a largura, espaçamento, bordas, e tamanho da fonte.
+A aparência padronizada facilita a leitura e a interação com os campos de entrada.
+*/
 .input {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    width: 100%;                       /* Define a largura do input para ocupar todo o contêiner */
+    padding: 0.8rem;                   /* Espaçamento interno que amplia a área de clique */
+    margin: 0.5rem 0;                  /* Margem vertical para separar os inputs */
+    border-radius: 4px;                /* Bordas arredondadas para um visual mais suave */
+    border: 1px solid #ccc;            /* Borda cinza clara para delimitar o campo */
+    font-size: 1rem;                   /* Tamanho da fonte para melhor legibilidade */
 }
 
+/* 
+.button
+Define o estilo do botão de consulta com uma cor de fundo azul, texto branco, 
+e bordas arredondadas. Também inclui um efeito de transição no hover.
+*/
 .button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1rem;
+    background-color: #3498db;         /* Cor de fundo azul para o botão */
+    color: #fff;                       /* Cor do texto do botão em branco */
+    padding: 0.8rem;                   /* Espaçamento interno que amplia a área de clique */
+    border: none;                      /* Remove a borda padrão */
+    border-radius: 4px;                /* Bordas arredondadas */
+    width: 100%;                       /* Largura do botão ocupa todo o contêiner */
+    cursor: pointer;                   /* Cursor de ponteiro ao passar o mouse */
+    font-size: 1rem;                   /* Tamanho padrão da fonte */
 }
 
+/* 
+.button:hover
+Efeito aplicado ao botão quando o usuário passa o mouse sobre ele. 
+A cor de fundo muda para um tom de azul mais escuro para fornecer feedback visual.
+*/
 .button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9;         /* Tom mais escuro de azul no hover */
 }
 
+/* 
+.resultList
+Estiliza a lista de resultados retornados da consulta. Remove o estilo de lista padrão,
+deixando o conteúdo limpo e organizado.
+*/
 .resultList {
-    margin-top: 1rem;
-    list-style: none;
-    padding: 0;
+    margin-top: 1rem;                  /* Espaçamento acima da lista */
+    list-style: none;                  /* Remove o estilo de lista padrão */
+    padding: 0;                        /* Remove o padding padrão */
 }
 
+/* 
+.resultItem
+Estiliza cada item da lista de resultados. Aplica um plano de fundo branco, 
+sombra leve e espaçamento interno, separando cada item com bordas arredondadas.
+*/
 .resultItem {
-    background-color: #fff;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;            /* Cor de fundo branco para destaque */
+    padding: 1rem;                     /* Espaçamento interno para separar o conteúdo */
+    margin: 0.5rem 0;                  /* Espaçamento vertical entre os itens */
+    border-radius: 4px;                /* Bordas arredondadas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve para profundidade */
 }
 
-/* Mensagem de erro */
+/* 
+.errorMessage
+Estilo para a mensagem de erro exibida ao usuário, como em casos de falha de consulta. 
+A cor vermelha destaca o erro e facilita a visualização.
+*/
 .errorMessage {
-    color: #e74c3c;
-    font-size: 1rem;
-    margin-top: 1rem;
+    color: #e74c3c;                    /* Cor vermelha para indicar erro */
+    font-size: 1rem;                   /* Tamanho da fonte padrão */
+    margin-top: 1rem;                  /* Espaçamento acima da mensagem */
 }

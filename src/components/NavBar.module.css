@@ -1,3 +1,8 @@
+/* 
+.navbar
+Estiliza o contêiner da barra de navegação, aplicando um fundo escuro e alinhando
+os elementos principais (logo e links de navegação) em um layout flexível.
+*/
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -7,26 +12,49 @@
     color: white;
 }
 
+/* 
+.logoContainer
+Agrupa o logotipo e o texto da aplicação, alinhando-os horizontalmente.
+*/
 .logoContainer {
     display: flex;
     align-items: center;
 }
 
+/* 
+.logo
+Define o tamanho e a margem do logotipo, melhorando a composição visual.
+*/
 .logo {
     height: 40px;
     margin-right: 10px;
 }
 
+/* 
+.logoText
+Define o estilo do texto do logotipo, incluindo a cor branca, tamanho da fonte e família.
+*/
 .logoText {
     font-size: 1.5rem;
     font-family: 'League Gothic', Arial, sans-serif;
+    color: white; /* Altera o texto para branco para contraste */
 }
 
+/* 
+.navLinks
+Estiliza o contêiner da lista de links de navegação, removendo marcadores
+e aplicando uma disposição horizontal.
+*/
 .navLinks {
     list-style: none;
     display: flex;
 }
 
+/* 
+.navLinks li
+Estiliza os itens de navegação individualmente, incluindo espaçamento
+e estilo do cursor para indicar que são clicáveis.
+*/
 .navLinks li {
     margin: 0 15px;
     cursor: pointer;
@@ -34,6 +62,29 @@
     font-family: 'League Gothic', Arial, sans-serif;
 }
 
+/* 
+.navLinks li:hover
+Aplica um efeito de hover nos itens de navegação, alterando a cor para laranja
+para indicar interatividade.
+*/
 .navLinks li:hover {
     color: #f39c12;
+}
+
+/* 
+.logout
+Estiliza o link de logout para destacar sua função de forma visualmente distinta.
+*/
+.logout {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* 
+.logout:hover
+Aplica uma cor vermelha mais escura ao botão de logout quando o usuário passa o mouse,
+indicando a função de saída.
+*/
+.logout:hover {
+    color: #c0392b;
 }

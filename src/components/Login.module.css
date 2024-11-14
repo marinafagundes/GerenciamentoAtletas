@@ -1,47 +1,75 @@
+/* 
+.loginContainer
+Define o estilo do contêiner principal do formulário de login. 
+Esse contêiner centraliza o conteúdo da página, aplicando um plano de fundo suave, bordas arredondadas e uma leve sombra.
+*/
 .loginContainer {
-    background-color: #f4f6f9;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
+    background-color: #f4f6f9;         /* Cor de fundo cinza claro para suavidade visual */
+    padding: 2rem;                     /* Espaçamento interno que separa o conteúdo das bordas */
+    border-radius: 8px;                /* Bordas arredondadas para suavizar a aparência */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve que proporciona um efeito de profundidade */
+    max-width: 400px;                  /* Define uma largura máxima do contêiner */
+    margin: auto;                      /* Centraliza o contêiner horizontalmente na página */
+    text-align: center;                /* Centraliza o texto e elementos internos */
 }
 
+/* 
+.input
+Estiliza os campos de entrada, como os de nome de usuário e senha, ajustando sua largura, 
+espaçamento, bordas e tamanho de fonte para melhorar a legibilidade e facilitar a interação.
+*/
 .input {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    width: 100%;                       /* Define a largura total do input dentro do contêiner */
+    padding: 0.8rem;                   /* Espaçamento interno que aumenta a área de clique */
+    margin: 0.5rem 0;                  /* Margem vertical para espaçar os inputs entre si */
+    border-radius: 4px;                /* Bordas arredondadas para um visual mais suave */
+    border: 1px solid #ccc;            /* Borda cinza clara para delimitar o campo */
+    font-size: 1rem;                   /* Tamanho de fonte padrão para legibilidade */
 }
 
+/* 
+.button
+Define o estilo do botão de login, incluindo uma cor de fundo azul, texto branco, bordas arredondadas
+e um efeito de transição ao passar o mouse.
+*/
 .button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1rem;
+    background-color: #3498db;         /* Cor de fundo azul que destaca o botão */
+    color: #fff;                       /* Cor do texto em branco para contraste */
+    padding: 0.8rem;                   /* Espaçamento interno que amplia a área de clique */
+    border: none;                      /* Remove a borda padrão do botão */
+    border-radius: 4px;                /* Bordas arredondadas */
+    width: 100%;                       /* Largura total do botão dentro do contêiner */
+    cursor: pointer;                   /* Exibe o cursor de ponteiro ao passar o mouse */
+    font-size: 1rem;                   /* Tamanho de fonte padrão */
 }
 
+/* 
+.button:hover
+Aplica um efeito de destaque ao botão quando o usuário passa o mouse sobre ele, 
+mudando para um tom de azul mais escuro.
+*/
 .button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9;         /* Tom mais escuro de azul para indicar hover */
 }
 
-/* Mensagem de sucesso */
+/* 
+.successMessage
+Estiliza a mensagem de sucesso exibida ao usuário, por exemplo, após um login bem-sucedido.
+Usa uma cor verde para indicar o sucesso, chamando a atenção de forma positiva.
+*/
 .successMessage {
-    color: #2ecc71;
-    font-size: 1rem;
-    margin-top: 1rem;
+    color: #2ecc71;                    /* Cor verde para indicar sucesso */
+    font-size: 1rem;                   /* Tamanho da fonte padrão */
+    margin-top: 1rem;                  /* Espaçamento acima da mensagem */
 }
 
-/* Mensagem de erro */
+/* 
+.errorMessage
+Define o estilo das mensagens de erro. Exibe uma cor vermelha para chamar a atenção
+para mensagens de erro, como falhas de login, e oferece contraste para fácil leitura.
+*/
 .errorMessage {
-    color: #e74c3c;
-    font-size: 1rem;
-    margin-top: 1rem;
+    color: #e74c3c;                    /* Cor vermelha para indicar erro */
+    font-size: 1rem;                   /* Tamanho da fonte padrão */
+    margin-top: 1rem;                  /* Espaçamento acima da mensagem */
 }

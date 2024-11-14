@@ -1,48 +1,77 @@
+/* 
+.perfilContainer
+Define o estilo do contêiner principal do perfil. 
+Este contêiner centraliza o conteúdo da página e aplica um fundo suave, bordas arredondadas 
+e uma leve sombra para dar um destaque sutil.
+*/
 .perfilContainer {
-    background-color: #f4f6f9;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
+    background-color: #f4f6f9;          /* Cor de fundo suave para o contêiner */
+    padding: 2rem;                      /* Espaçamento interno que centraliza o conteúdo */
+    border-radius: 8px;                 /* Bordas arredondadas para um visual mais suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do contêiner */
+    max-width: 400px;                   /* Limita a largura máxima do contêiner para um layout consistente */
+    margin: auto;                       /* Centraliza o contêiner horizontalmente */
+    text-align: center;                 /* Alinha o conteúdo textualmente ao centro */
 }
 
+/* 
+.input
+Estiliza os campos de entrada de dados, ajustando sua largura, espaçamento, bordas 
+e o tamanho da fonte para melhorar a usabilidade e a legibilidade.
+*/
 .input {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    width: 100%;                        /* Campo ocupa toda a largura disponível */
+    padding: 0.8rem;                    /* Espaçamento interno para conforto na digitação */
+    margin: 0.5rem 0;                   /* Espaçamento entre os campos para uma melhor disposição */
+    border-radius: 4px;                 /* Bordas levemente arredondadas para suavizar os cantos */
+    border: 1px solid #ccc;             /* Borda cinza clara, sutil, para os campos */
+    font-size: 1rem;                    /* Tamanho de fonte padrão para uma boa legibilidade */
 }
 
+/* 
+.button
+Define o estilo do botão de ação, com uma cor de fundo verde, texto branco, bordas arredondadas
+e transições suaves ao passar o mouse para um melhor feedback visual.
+*/
 .button {
-    background-color: #2ecc71;
-    color: #fff;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    background-color: #2ecc71;          /* Cor de fundo verde vibrante para o botão */
+    color: #fff;                        /* Cor do texto do botão em branco */
+    padding: 0.8rem;                    /* Espaçamento interno do botão */
+    border: none;                       /* Remove a borda padrão do botão */
+    border-radius: 4px;                 /* Bordas arredondadas para suavizar o botão */
+    width: 100%;                        /* Ocupa toda a largura do contêiner */
+    cursor: pointer;                   /* Indica que o botão é clicável */
+    font-size: 1rem;                    /* Tamanho de fonte padrão no botão */
+    transition: background-color 0.3s;  /* Transição suave para o efeito de hover */
 }
 
+/* 
+.button:hover
+Aplica um efeito visual de destaque quando o usuário passa o mouse sobre o botão,
+mudando sua cor de fundo para um tom mais escuro de verde.
+*/
 .button:hover {
-    background-color: #27ae60;
+    background-color: #27ae60;          /* Tom mais escuro de verde para feedback visual ao passar o mouse */
 }
 
-/* Mensagem de sucesso */
+/* 
+.successMessage
+Estiliza as mensagens de sucesso, exibidas quando uma ação é bem-sucedida. 
+A cor verde é usada para indicar positividade e chamar a atenção do usuário de maneira agradável.
+*/
 .successMessage {
-    color: #2ecc71;
-    font-size: 1rem;
-    margin-top: 1rem;
+    color: #2ecc71;                     /* Cor verde para destacar a mensagem de sucesso */
+    font-size: 1rem;                    /* Tamanho de fonte consistente com o restante do layout */
+    margin-top: 1rem;                   /* Adiciona espaçamento acima da mensagem para separação visual */
 }
 
-/* Mensagem de erro */
+/* 
+.errorMessage
+Define o estilo das mensagens de erro, que são exibidas quando algo dá errado.
+A cor vermelha é usada para chamar a atenção do usuário e indicar problemas ou falhas.
+*/
 .errorMessage {
-    color: #e74c3c;
-    font-size: 1rem;
-    margin-top: 1rem;
+    color: #e74c3c;                     /* Cor vermelha para indicar erro e chamar atenção */
+    font-size: 1rem;                    /* Tamanho de fonte consistente com o layout */
+    margin-top: 1rem;                   /* Espaçamento acima da mensagem de erro para separação */
 }
