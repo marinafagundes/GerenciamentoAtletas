@@ -23,17 +23,17 @@ export default function Login() {
               <Running className='w-6 h-6 text-primary' />
             </div>
             <h1 className='text-3xl font-bold'>Bem-vindo!</h1>
-            <p className='text-muted-foreground'>Crie sua conta</p>
+            <p className='text-muted-foreground'>Entre na sua conta</p>
           </div>
           <Separator />
           <div className='space-y-4'>
             <div className='space-y-2'>
               <Label htmlFor='username'>Usuário</Label>
-              <Input id='username' placeholder='Digite seu usuário' required />
+              <Input id='username' placeholder='Digite seu usuário' type='text' required />
             </div>
             <div className='space-y-2'>
               <Label htmlFor='password'>Senha</Label>
-              <Input id='password' type='password' required />
+              <Input id='password' placeholder='Digite sua senha' type='password' required />
             </div>
             <div className='text-sm'>
               <Link
