@@ -60,6 +60,14 @@ export default function Login() {
                     <option value="O">Outro</option>
                   </select>
                 </div>
+                <div className='space-y-2'>
+                  <Label htmlFor='agence'>Agência</Label>
+                  <Input id='agence' placeholder='Digite sua agência' type='text' />
+                </div>
+                <div className='space-y-2'>
+                  <Label htmlFor='team'>Equipe</Label>
+                  <Input id='team' placeholder='Digite sua equipe' type='text' />
+                </div>
               </CardContent>
             </Card>
             <Card>

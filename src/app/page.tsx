@@ -33,7 +33,9 @@ export default function Home() {
               <Bell className="h-5 w-5" />
             </Button>
             <Button variant="ghost" size="icon">
-              <UserCircle className="h-5 w-5" />
+              <Link href='/profile'>
+                <UserCircle className="h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </div>
