@@ -1,13 +1,18 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
-import { Bell, HomeIcon, Search, UserCircle } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { NavigationBar } from "@/components/ui/navigation-bar"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useFeedData } from "@/hooks/useFeedData"
+import { Loading } from "@/components/ui/loading"
 
-export default function Home() {
+const Home = () => {
+  const { data: feedData, loading, error } = useFeedData();
+
   return (
     <div className="min-h-screen bg-gray-50">
       <NavigationBar />
@@ -65,73 +70,84 @@ export default function Home() {
 
           {/* Main Feed */}
           <div className="lg:col-span-6 space-y-6">
-            <Card>
-              <CardContent className="p-4">
-                <div className="flex gap-4">
-                  <Avatar>
-                    <AvatarImage src="/placeholder.svg" />
-                    <AvatarFallback>U</AvatarFallback>
-                  </Avatar>
-                  <Input placeholder="Compartilhe suas conquistas e sentimentos" />
-                </div>
-                <div className="flex gap-2 mt-4">
-                  <Button variant="outline" size="sm">Imagem</Button>
-                  <Button variant="outline" size="sm">Vídeo</Button>
-                  <Button variant="outline" size="sm">Música</Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-4 space-y-4">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <Avatar>
-                      <AvatarImage src="/placeholder.svg" />
-                      <AvatarFallback>RC</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <div className="font-medium">Rogério Ceni</div>
-                      <div className="text-sm text-muted-foreground">há 6 minutos</div>
+            {loading ? (
+              <Loading />
+            ) : error ? (
+              <div className="text-center text-red-500">{error}</div>
+            ) : (
+              <>
+                <Card>
+                  <CardContent className="p-4">
+                    <div className="flex gap-4">
+                      <Avatar>
+                        <AvatarImage src="/placeholder.svg" />
+                        <AvatarFallback>U</AvatarFallback>
+                      </Avatar>
+                      <Input placeholder="Compartilhe suas conquistas e sentimentos" />
                     </div>
-                  </div>
-                  <Button variant="ghost" size="icon">
-                    <span className="sr-only">Menu</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-4 w-4"
-                    >
-                      <circle cx="12" cy="12" r="1" />
-                      <circle cx="12" cy="5" r="1" />
-                      <circle cx="12" cy="19" r="1" />
-                    </svg>
-                  </Button>
-                </div>
-                <Image
-                  src="/placeholder.svg"
-                  alt="Post image"
-                  width={600}
-                  height={400}
-                  className="rounded-lg w-full"
-                />
-                <div className="flex items-center gap-4">
-                  <Button variant="ghost" size="sm">
-                    ❤️ 15
-                  </Button>
-                  <Button variant="ghost" size="sm">
-                    💬 42
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                    <div className="flex gap-2 mt-4">
+                      <Button variant="outline" size="sm">Imagem</Button>
+                      <Button variant="outline" size="sm">Vídeo</Button>
+                      <Button variant="outline" size="sm">Música</Button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {feedData.map((post) => (
+                  <Card key={post.id}>
+                    <CardContent className="p-4 space-y-4">
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-3">
+                          <Avatar>
+                            <AvatarImage src={post.author.avatar} />
+                            <AvatarFallback>{post.author.name[0]}</AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <div className="font-medium">{post.author.name}</div>
+                            <div className="text-sm text-muted-foreground">{post.timeAgo}</div>
+                          </div>
+                        </div>
+                        <Button variant="ghost" size="icon">
+                          <span className="sr-only">Menu</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="h-4 w-4"
+                          >
+                            <circle cx="12" cy="12" r="1" />
+                            <circle cx="12" cy="5" r="1" />
+                            <circle cx="12" cy="19" r="1" />
+                          </svg>
+                        </Button>
+                      </div>
+                      <p>{post.content}</p>
+                      <Image
+                        src={post.image}
+                        alt="Post image"
+                        width={600}
+                        height={400}
+                        className="rounded-lg w-full"
+                      />
+                      <div className="flex items-center gap-4">
+                        <Button variant="ghost" size="sm">
+                          ❤️ {post.likes}
+                        </Button>
+                        <Button variant="ghost" size="sm">
+                          💬 {post.comments}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </>
+            )}
           </div>
 
           {/* Right Sidebar */}
@@ -161,3 +177,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home;

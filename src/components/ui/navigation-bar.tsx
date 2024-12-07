@@ -4,7 +4,7 @@ import { Bell, HomeIcon, Search, UserCircle } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-export function NavigationBar() {
+const NavigationBar = () => {
   return (
     <nav className="fixed top-0 w-full bg-[#3b5998] text-white z-50">
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
@@ -41,3 +41,4 @@ export function NavigationBar() {
   )
 }
 
+export { NavigationBar };
