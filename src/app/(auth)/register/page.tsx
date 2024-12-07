@@ -13,14 +13,14 @@ import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface FormData {
-  name: string
-  birthdate: string
-  sport: string
-  gender: string
-  agency: string
-  team: string
-  username: string
-  password: string
+  nomeUsuario: string
+  senha: string
+  nome: string
+  dataNascimento: string
+  esporte: string
+  genero: string
+  agenciaCnpj: string
+  equipeCnpj: string
 }
 
 interface FormErrors {
@@ -30,14 +30,14 @@ interface FormErrors {
 const Register = () => {
   const router = useRouter()
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    birthdate: '',
-    sport: '',
-    gender: '',
-    agency: '',
-    team: '',
-    username: '',
-    password: '',
+    nomeUsuario: '',
+    senha: '',
+    nome: '',
+    dataNascimento: '',
+    esporte: '',
+    genero: '',
+    agenciaCnpj: '',
+    equipeCnpj: '',
   })
   const [errors, setErrors] = useState<FormErrors>({})
 
@@ -48,15 +48,14 @@ const Register = () => {
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
-    console.log(formData.birthdate)
-    if (formData.name.length > 255) newErrors.name = 'O nome deve ter no máximo 255 caracteres'
-    if (new Date(formData.birthdate).getTime() > new Date().setHours(0, 0, 0, 0)) newErrors.birthdate = 'A data de nascimento não pode ser no futuro'
-    if (formData.sport.length > 255) newErrors.sport = 'O esporte deve ter no máximo 255 caracteres'
-    if (!['M', 'F', 'O'].includes(formData.gender)) newErrors.gender = 'Gênero inválido'
-    if (formData.agency.length > 255) newErrors.agency = 'A agência deve ter no máximo 255 caracteres'
-    if (formData.team.length > 255) newErrors.team = 'A equipe deve ter no máximo 255 caracteres'
-    if (formData.username.length > 255 || !/^[a-zA-Z0-9]+$/.test(formData.username)) newErrors.username = 'O usuário deve ter no máximo 255 caracteres e conter apenas letras e números'
-    if (formData.password.length > 20) newErrors.password = 'A senha deve ter no máximo 20 caracteres'
+    if (formData.nome.length > 255) newErrors.name = 'O nome deve ter no máximo 255 caracteres'
+    if (new Date(formData.dataNascimento).getTime() > new Date().setHours(0, 0, 0, 0)) newErrors.birthdate = 'A data de nascimento não pode ser no futuro'
+    if (formData.esporte.length > 255) newErrors.sport = 'O esporte deve ter no máximo 255 caracteres'
+    if (!['M', 'F', 'O'].includes(formData.genero)) newErrors.gender = 'Gênero inválido'
+    if (formData.agenciaCnpj.length > 14) newErrors.agency = 'O CNPJ da agência deve ter no máximo 14 caracteres'
+    if (formData.equipeCnpj.length > 14) newErrors.team = 'O CNPJ da equipe deve ter no máximo 14 caracteres'
+    if (formData.nomeUsuario.length > 255 || !/^[a-zA-Z0-9]+$/.test(formData.nomeUsuario)) newErrors.username = 'O usuário deve ter no máximo 255 caracteres e conter apenas letras e números'
+    if (formData.senha.length > 20) newErrors.password = 'A senha deve ter no máximo 20 caracteres'
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -66,8 +65,8 @@ const Register = () => {
     e.preventDefault()
     if (validateForm()) {
       try {
-        // Simulating API call
-        const response = await axios.post('https://api.example.com/register', formData)
+        console.log('dados', formData)
+        const response = await axios.post('http://localhost:8080/api/auth/register', formData)
         console.log('Registration successful:', response.data)
         // toast({
         //   title: "Conta criada com sucesso!",
@@ -107,12 +106,12 @@ const Register = () => {
                   <Label htmlFor='name'>Nome</Label>
                   <Input
                     id='name'
-                    name='name'
+                    name='nome'
                     placeholder='Digite seu nome completo'
                     type='text'
                     required
                     maxLength={255}
-                    value={formData.name}
+                    value={formData.nome}
                     onChange={handleInputChange}
                   />
                   {errors.name && <p className='text-red-500 text-sm'>{errors.name}</p>}
@@ -121,10 +120,10 @@ const Register = () => {
                   <Label htmlFor='birthdate'>Data de Nascimento</Label>
                   <Input
                     id='birthdate'
-                    name='birthdate'
+                    name='dataNascimento'
                     type="date"
                     required
-                    value={formData.birthdate}
+                    value={formData.dataNascimento}
                     onChange={handleInputChange}
                   />
                   {errors.birthdate && <p className='text-red-500 text-sm'>{errors.birthdate}</p>}
@@ -133,12 +132,12 @@ const Register = () => {
                   <Label htmlFor='sport'>Esporte</Label>
                   <Input
                     id='sport'
-                    name='sport'
+                    name='esporte'
                     placeholder='Digite seu esporte'
                     type='text'
                     required
                     maxLength={255}
-                    value={formData.sport}
+                    value={formData.esporte}
                     onChange={handleInputChange}
                   />
                   {errors.sport && <p className='text-red-500 text-sm'>{errors.sport}</p>}
@@ -147,10 +146,10 @@ const Register = () => {
                   <Label htmlFor='gender'>Gênero</Label>
                   <select
                     id='gender'
-                    name='gender'
+                    name='genero'
                     className='w-full h-10 px-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'
                     required
-                    value={formData.gender}
+                    value={formData.genero}
                     onChange={handleInputChange}
                   >
                     <option value="">Selecione seu gênero</option>
@@ -164,11 +163,11 @@ const Register = () => {
                   <Label htmlFor='agency'>Agência</Label>
                   <Input
                     id='agency'
-                    name='agency'
-                    placeholder='Digite o nome da sua agência'
+                    name='agenciaCnpj'
+                    placeholder='Digite o CNPJ da sua agência'
                     type='text'
-                    maxLength={255}
-                    value={formData.agency}
+                    maxLength={14}
+                    value={formData.agenciaCnpj}
                     onChange={handleInputChange}
                   />
                   {errors.agency && <p className='text-red-500 text-sm'>{errors.agency}</p>}
@@ -177,11 +176,11 @@ const Register = () => {
                   <Label htmlFor='team'>Equipe</Label>
                   <Input
                     id='team'
-                    name='team'
-                    placeholder='Digite o nome da sua equipe'
+                    name='equipeCnpj'
+                    placeholder='Digite o CNPJ da sua equipe'
                     type='text'
-                    maxLength={255}
-                    value={formData.team}
+                    maxLength={14}
+                    value={formData.equipeCnpj}
                     onChange={handleInputChange}
                   />
                   {errors.team && <p className='text-red-500 text-sm'>{errors.team}</p>}
@@ -197,12 +196,12 @@ const Register = () => {
                   <Label htmlFor='username'>Usuário</Label>
                   <Input
                     id='username'
-                    name='username'
+                    name='nomeUsuario'
                     placeholder='Digite seu usuário'
                     type='text'
                     required
                     maxLength={255}
-                    value={formData.username}
+                    value={formData.nomeUsuario}
                     onChange={handleInputChange}
                   />
                   {errors.username && <p className='text-red-500 text-sm'>{errors.username}</p>}
@@ -211,12 +210,12 @@ const Register = () => {
                   <Label htmlFor='password'>Senha</Label>
                   <Input
                     id='password'
-                    name='password'
+                    name='senha'
                     placeholder='Digite sua senha'
                     type='password'
                     required
                     maxLength={20}
-                    value={formData.password}
+                    value={formData.senha}
                     onChange={handleInputChange}
                   />
                   {errors.password && <p className='text-red-500 text-sm'>{errors.password}</p>}

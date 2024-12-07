@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+"use client"
+
 import localFont from "next/font/local";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/auth";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,22 +15,20 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Sportify",
-  description: "Sportify App",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="pt-br">
+      <head>
+        <title>Sportify</title>
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

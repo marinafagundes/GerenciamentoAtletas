@@ -9,7 +9,7 @@ const NavigationBar = () => {
     <nav className="fixed top-0 w-full bg-[#3b5998] text-white z-50">
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/placeholder.svg" alt="Sportify Logo" width={32} height={32} className="rounded" />
+          <Image src="/logo.svg" alt="Sportify Logo" width={32} height={32} className="rounded" />
           <span className="text-xl font-bold">Sportify</span>
         </Link>
         <div className="flex-1 max-w-xl px-4">

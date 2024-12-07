@@ -10,7 +10,6 @@ interface FeedItem {
   image: string;
   likes: number;
   comments: number;
-  timeAgo: string;
 }
 
 export function useFeedData() {
@@ -35,8 +34,7 @@ export function useFeedData() {
             content: "Mais um dia de treino intenso. Focado na próxima partida! 💪⚽",
             image: "/placeholder.svg",
             likes: 15000,
-            comments: 2500,
-            timeAgo: "2 horas atrás"
+            comments: 2500
           },
           {
             id: 2,
@@ -47,8 +45,7 @@ export function useFeedData() {
             content: "Orgulhosa de representar o Brasil em mais uma competição internacional. Vamos com tudo! 🇧🇷",
             image: "/placeholder.svg",
             likes: 8700,
-            comments: 1200,
-            timeAgo: "5 horas atrás"
+            comments: 1200
           },
           {
             id: 3,
@@ -59,8 +56,7 @@ export function useFeedData() {
             content: "Lembrança de um dos melhores momentos da minha carreira. Saudades das quadras! 🎾",
             image: "/placeholder.svg",
             likes: 5600,
-            comments: 820,
-            timeAgo: "1 dia atrás"
+            comments: 820
           }
         ];
         

@@ -4,17 +4,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { MonitorIcon as Running } from 'lucide-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent } from '@/components/ui/card'
+import { AuthContext } from '@/contexts/auth'
 
 interface FormData {
-  username: string
-  password: string
+  nomeUsuario: string
+  senha: string
 }
 
 interface FormErrors {
@@ -23,9 +24,10 @@ interface FormErrors {
 
 const Login = () => {
   const router = useRouter()
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState<FormData>({
-    username: '',
-    password: '',
+    nomeUsuario: '',
+    senha: '',
   })
   const [errors, setErrors] = useState<FormErrors>({})
 
@@ -36,8 +38,8 @@ const Login = () => {
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
-    if (formData.username.length > 255 || !/^[a-zA-Z0-9]+$/.test(formData.username)) newErrors.username = 'O usuário deve ter no máximo 255 caracteres e conter apenas letras e números'
-    if (formData.password.length > 20) newErrors.password = 'A senha deve ter no máximo 20 caracteres'
+    if (formData.nomeUsuario.length > 255 || !/^[a-zA-Z0-9]+$/.test(formData.nomeUsuario)) newErrors.username = 'O usuário deve ter no máximo 255 caracteres e conter apenas letras e números'
+    if (formData.senha.length > 20) newErrors.password = 'A senha deve ter no máximo 20 caracteres'
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -47,21 +49,12 @@ const Login = () => {
     e.preventDefault()
     if (validateForm()) {
       try {
-        // Simulating API call
-        const response = await axios.post('https://api.example.com/register', formData)
+        const response = await axios.post('http://localhost:8080/api/auth/login', formData);
         console.log('Registration successful:', response.data)
-        // toast({
-        //   title: "Conta criada com sucesso!",
-        //   description: "Você será redirecionado para a página inicial.",
-        // })
+        login({username: formData.nomeUsuario});
         router.push('/')
       } catch (error) {
         console.error('Registration failed:', error)
-        // toast({
-        //   title: "Erro ao criar conta",
-        //   description: "Por favor, tente novamente mais tarde.",
-        //   variant: "destructive",
-        // })
       }
     }
   }
@@ -85,12 +78,12 @@ const Login = () => {
                   <Label htmlFor='username'>Usuário</Label>
                   <Input
                     id='username'
-                    name='username'
+                    name='nomeUsuario'
                     placeholder='Digite seu usuário'
                     type='text'
                     required
                     maxLength={255}
-                    value={formData.username}
+                    value={formData.nomeUsuario}
                     onChange={handleInputChange}
                   />
                   {errors.username && <p className='text-red-500 text-sm'>{errors.username}</p>}
@@ -99,12 +92,12 @@ const Login = () => {
                   <Label htmlFor='password'>Senha</Label>
                   <Input
                     id='password'
-                    name='password'
+                    name='senha'
                     placeholder='Digite sua senha'
                     type='password'
                     required
                     maxLength={20}
-                    value={formData.password}
+                    value={formData.senha}
                     onChange={handleInputChange}
                   />
                   {errors.password && <p className='text-red-500 text-sm'>{errors.password}</p>}

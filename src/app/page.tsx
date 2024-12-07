@@ -7,20 +7,17 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { NavigationBar } from "@/components/ui/navigation-bar"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { useFeedData } from "@/hooks/useFeedData"
+import { useFeedData } from "@/api/useFeedData"
 import { Loading } from "@/components/ui/loading"
 
 const Home = () => {
   const { data: feedData, loading, error } = useFeedData();
-
   return (
     <div className="min-h-screen bg-gray-50">
       <NavigationBar />
 
-      {/* Main Content */}
       <div className="container mx-auto pt-16 px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 py-6">
-          {/* Left Sidebar */}
           <div className="lg:col-span-3 space-y-6">
             <Card>
               <CardHeader className="font-semibold">Engajamento</CardHeader>
@@ -68,7 +65,6 @@ const Home = () => {
             </Card>
           </div>
 
-          {/* Main Feed */}
           <div className="lg:col-span-6 space-y-6">
             {loading ? (
               <Loading />
@@ -104,7 +100,6 @@ const Home = () => {
                           </Avatar>
                           <div>
                             <div className="font-medium">{post.author.name}</div>
-                            <div className="text-sm text-muted-foreground">{post.timeAgo}</div>
                           </div>
                         </div>
                         <Button variant="ghost" size="icon">
@@ -149,8 +144,7 @@ const Home = () => {
               </>
             )}
           </div>
-
-          {/* Right Sidebar */}
+          
           <div className="lg:col-span-3">
             <Card>
               <CardHeader className="font-semibold">Últimas Notícias</CardHeader>

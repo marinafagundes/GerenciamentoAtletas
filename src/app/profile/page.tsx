@@ -1,11 +1,10 @@
 "use client"
 
 import { NavigationBar } from "@/components/ui/navigation-bar"
-import { ChevronDown, ChevronUp } from 'lucide-react'
-import Image from "next/image"
+import { ChevronDown, ChevronUp, UserCircle } from 'lucide-react'
 import { useState } from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { useProfileData } from "@/hooks/useProfileData"
+import { useProfileData } from "@/api/useProfileData"
 import { Loading } from "@/components/ui/loading"
 
 const Profile = () => {
@@ -26,20 +25,13 @@ const Profile = () => {
       <NavigationBar />
 
       <div className="bg-[#3b4992] h-48"></div>
-
       <div className="max-w-5xl mx-auto px-6 -mt-24">
         <div className="flex flex-col items-center mb-8 relative z-10">
           <div className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white bg-white">
-            <Image
-              src={data?.image || "/placeholder.svg"}
-              alt={data?.name || "Profile"}
-              width={160}
-              height={160}
-              className="w-full h-full object-cover"
-            />
+            <UserCircle className=" w-full h-full object-cover h-160 w-160" />
           </div>
-          <h1 className="text-2xl font-bold text-[#3b4992] mt-2">{data?.name}</h1>
-          <p className="text-gray-600">{data?.sport}</p>
+          <h1 className="text-2xl font-bold text-[#3b4992] mt-2">{data?.atleta.nomeUsuario}</h1>
+          <p className="text-gray-600">{data?.atleta.esporte}</p>
         </div>
 
         <div className="grid md:grid-cols-[300px,1fr] gap-6 pb-6">
@@ -50,19 +42,25 @@ const Profile = () => {
             <CardContent className="space-y-4">
               <div>
                 <p className="text-sm text-gray-500">Nome</p>
-                <p>{data?.fullName}</p>
+                <p>{data?.atleta.nome}</p>
               </div>
               <div>
                 <p className="text-sm text-gray-500">Data de Nascimento</p>
-                <p>{data?.birthDate}</p>
+                <p>{data?.atleta.dataNascimento}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Nacionalidade</p>
-                <p>{data?.nationality}</p>
+                <p className="text-sm text-gray-500">Genêro</p>
+                <p>
+                  {{
+                    M: "Masculino",
+                    F: "Feminino",
+                    O: "Outro",
+                  }[data?.atleta.genero ?? "O"]}
+                </p>
               </div>
               <div>
                 <p className="text-sm text-gray-500">Modalidade</p>
-                <p>{data?.sport}</p>
+                <p>{data?.atleta.esporte}</p>
               </div>
             </CardContent>
           </Card>
@@ -84,12 +82,12 @@ const Profile = () => {
               </CardHeader>
               {isConquistasOpen && (
                 <CardContent className="space-y-4">
-                  {data?.achievements.map((achievement, index) => (
+                  {data?.conquistas.map((conquista, index) => (
                     <div key={index}>
-                      <h3 className="font-semibold mb-2">{achievement.title}</h3>
+                      <h3 className="font-semibold mb-2">{conquista.eventoNome}</h3>
                       <ul className="list-disc list-inside text-gray-600 space-y-1">
-                        {achievement.items.map((item, itemIndex) => (
-                          <li key={itemIndex}>{item}</li>
+                        {conquista.premiacoes.map((premiacao, itemIndex) => (
+                          <li key={itemIndex}>{premiacao}</li>
                         ))}
                       </ul>
                     </div>
@@ -114,12 +112,14 @@ const Profile = () => {
               </CardHeader>
               {isVinculosOpen && (
                 <CardContent className="space-y-2">
-                  {data?.affiliations.map((affiliation, index) => (
-                    <div key={index}>
-                      <h3 className="font-semibold">{affiliation.organization}</h3>
-                      <p className="text-sm text-gray-500">{affiliation.period}</p>
-                    </div>
-                  ))}
+                  <div>
+                    <h3 className="font-semibold">{data?.atleta.agenciaCnpj}</h3>
+                    {/* <p className="text-sm text-gray-500">{affiliation.period}</p> */}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{data?.atleta.equipeCnpj}</h3>
+                    {/* <p className="text-sm text-gray-500">{affiliation.period}</p> */}
+                  </div>
                 </CardContent>
               )}
             </Card>
