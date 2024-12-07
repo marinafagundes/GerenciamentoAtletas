@@ -35,14 +35,6 @@ export default function Login() {
               <Label htmlFor='password'>Senha</Label>
               <Input id='password' placeholder='Digite sua senha' type='password' required />
             </div>
-            <div className='text-sm'>
-              <Link
-                href='/forgot-password'
-                className='text-primary hover:underline'
-              >
-                Esqueci minha senha
-              </Link>
-            </div>
             <Button onClick={() => router.push('/')} className='w-full mt-16' size='lg'>
               Entrar
             </Button>

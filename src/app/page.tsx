@@ -4,42 +4,13 @@ import { Bell, HomeIcon, Search, UserCircle } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { NavigationBar } from "@/components/ui/navigation-bar"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full bg-[#3b5998] text-white z-50">
-        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Image src="/placeholder.svg" alt="Sportify Logo" width={32} height={32} className="rounded" />
-            <span className="text-xl font-bold">Sportify</span>
-          </div>
-          <div className="flex-1 max-w-xl px-4">
-            <div className="relative">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Pesquisar"
-                className="pl-8 bg-white/90 text-black"
-              />
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon">
-              <HomeIcon className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Bell className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Link href='/profile'>
-                <UserCircle className="h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <NavigationBar />
 
       {/* Main Content */}
       <div className="container mx-auto pt-16 px-4">

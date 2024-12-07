@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ChevronDown, ChevronUp, Bell, Search, HomeIcon, UserCircle } from 'lucide-react';
+import { NavigationBar } from "@/components/ui/navigation-bar";
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import Image from "next/image";
 import { useState } from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function Component() {
   const [isConquistasOpen, setIsConquistasOpen] = useState(true);
@@ -13,40 +13,7 @@ export default function Component() {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full bg-[#3b5998] text-white z-50">
-        <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/placeholder.svg"
-              alt="Sportify Logo"
-              width={32}
-              height={32}
-              className="rounded"
-            />
-            <span className="text-xl font-bold">Sportify</span>
-          </div>
-          <div className="flex-1 max-w-xl px-4">
-            <div className="relative">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Pesquisar"
-                className="pl-8 bg-white/90 text-black"
-              />
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon">
-              <HomeIcon className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Bell className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <UserCircle className="h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <NavigationBar/>
 
       {/* Blue background div */}
       <div className="bg-[#3b4992] h-48"></div>
@@ -67,11 +34,13 @@ export default function Component() {
           <p className="text-gray-600">Ginasta</p>
         </div>
 
-        <div className="grid md:grid-cols-[300px,1fr] gap-6 mt-8">
+        <div className="grid md:grid-cols-[300px,1fr] gap-6 pb-6">
           {/* Left Sidebar */}
-          <div className="bg-white rounded-lg p-6">
-            <h2 className="font-bold mb-4">Informações Pessoais</h2>
-            <div className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Informações Pessoais</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
               <div>
                 <p className="text-sm text-gray-500">Nome</p>
                 <p>Rebeca Rodrigues de Andrade</p>
@@ -88,26 +57,28 @@ export default function Component() {
                 <p className="text-sm text-gray-500">Modalidade</p>
                 <p>Ginástica artística</p>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* Main Content */}
           <div className="space-y-4">
             {/* Conquistas Section */}
-            <div className="bg-white rounded-lg">
-              <button
-                onClick={() => setIsConquistasOpen(!isConquistasOpen)}
-                className="w-full p-6 flex justify-between items-center"
-              >
-                <h2 className="font-bold">Conquistas</h2>
-                {isConquistasOpen ? (
-                  <ChevronUp className="w-5 h-5 text-gray-500" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-500" />
-                )}
-              </button>
+            <Card>
+              <CardHeader className="p-0">
+                <button
+                  onClick={() => setIsConquistasOpen(!isConquistasOpen)}
+                  className="w-full p-6 flex justify-between items-center"
+                >
+                  <CardTitle className="text-lg">Conquistas</CardTitle>
+                  {isConquistasOpen ? (
+                    <ChevronUp className="w-5 h-5 text-gray-500" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-gray-500" />
+                  )}
+                </button>
+              </CardHeader>
               {isConquistasOpen && (
-                <div className="px-6 pb-6 space-y-4">
+                <CardContent className="space-y-4">
                   <div>
                     <h3 className="font-semibold mb-2">
                       Olimpíadas Tóquio 2020
@@ -128,43 +99,44 @@ export default function Component() {
                       <li>Bronze em argolas</li>
                     </ul>
                   </div>
-                </div>
+                </CardContent>
               )}
-            </div>
+            </Card>
 
             {/* Vínculos Section */}
-            <div className="bg-white rounded-lg">
-              <button
-                onClick={() => setIsVinculosOpen(!isVinculosOpen)}
-                className="w-full p-6 flex justify-between items-center"
-              >
-                <h2 className="font-bold">Vínculos</h2>
-                {isVinculosOpen ? (
-                  <ChevronUp className="w-5 h-5 text-gray-500" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-500" />
-                )}
-              </button>
+            <Card>
+              <CardHeader className="p-0">
+                <button
+                  onClick={() => setIsVinculosOpen(!isVinculosOpen)}
+                  className="w-full p-6 flex justify-between items-center"
+                >
+                  <CardTitle className="text-lg">Vínculos</CardTitle>
+                  {isVinculosOpen ? (
+                    <ChevronUp className="w-5 h-5 text-gray-500" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-gray-500" />
+                  )}
+                </button>
+              </CardHeader>
               {isVinculosOpen && (
-                <div className="px-6 pb-6">
-                  <div className="space-y-2">
-                    <div>
-                      <h3 className="font-semibold">
-                        Seleção Brasileira de Ginástica
-                      </h3>
-                      <p className="text-sm text-gray-500">Desde 2019</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">São Paulo FC</h3>
-                      <p className="text-sm text-gray-500">2022 - 2024</p>
-                    </div>
+                <CardContent className="space-y-2">
+                  <div>
+                    <h3 className="font-semibold">
+                      Seleção Brasileira de Ginástica
+                    </h3>
+                    <p className="text-sm text-gray-500">Desde 2019</p>
                   </div>
-                </div>
+                  <div>
+                    <h3 className="font-semibold">São Paulo FC</h3>
+                    <p className="text-sm text-gray-500">2022 - 2024</p>
+                  </div>
+                </CardContent>
               )}
-            </div>
+            </Card>
           </div>
         </div>
       </div>
     </div>
   );
 }
+
