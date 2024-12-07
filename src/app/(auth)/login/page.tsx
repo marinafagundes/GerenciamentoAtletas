@@ -49,7 +49,8 @@ const Login = () => {
     e.preventDefault()
     if (validateForm()) {
       try {
-        const response = await axios.post('http://localhost:8080/api/auth/login', formData);
+        console.log(formData)
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API}/auth/login`, formData);
         console.log('Registration successful:', response.data)
         login({username: formData.nomeUsuario});
         router.push('/')

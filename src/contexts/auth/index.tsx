@@ -13,7 +13,7 @@ type AuthContextProps = {
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [ user, setUser ] = useState<UserProps | null>({username: "teste"});
+  const [ user, setUser ] = useState<UserProps | null>(null);
 
   const login = (user: UserProps) => {
     setUser(user);
@@ -27,7 +27,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthContext.Provider 
       value={{
-        user, 
+        user,
         login, 
         logout
       }}

@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { useProfileData } from "@/api/useProfileData"
 import { Loading } from "@/components/ui/loading"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const Profile = () => {
   const [isConquistasOpen, setIsConquistasOpen] = useState(true)
@@ -27,9 +28,10 @@ const Profile = () => {
       <div className="bg-[#3b4992] h-48"></div>
       <div className="max-w-5xl mx-auto px-6 -mt-24">
         <div className="flex flex-col items-center mb-8 relative z-10">
-          <div className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white bg-white">
-            <UserCircle className=" w-full h-full object-cover h-160 w-160" />
-          </div>
+          <Avatar className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white bg-white">
+            <AvatarImage src="/user.png" className=" w-full h-full object-cover h-160 w-160" />
+            <AvatarFallback>{data?.atleta.nomeUsuario}</AvatarFallback>
+          </Avatar>
           <h1 className="text-2xl font-bold text-[#3b4992] mt-2">{data?.atleta.nomeUsuario}</h1>
           <p className="text-gray-600">{data?.atleta.esporte}</p>
         </div>

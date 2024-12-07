@@ -9,9 +9,25 @@ import { NavigationBar } from "@/components/ui/navigation-bar"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useFeedData } from "@/api/useFeedData"
 import { Loading } from "@/components/ui/loading"
+import { AuthContext } from "@/contexts/auth"
+import { useRouter } from 'next/navigation'
+import { useContext, useEffect } from "react"
 
 const Home = () => {
+  const router = useRouter();
+  const { user } = useContext(AuthContext);
   const { data: feedData, loading, error } = useFeedData();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
+
+  if (!user) {
+    return <Loading />;
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <NavigationBar />
@@ -50,7 +66,7 @@ const Home = () => {
                   <div key={person.name} className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Avatar>
-                        <AvatarImage src="/placeholder.svg" />
+                        <AvatarImage src="/user.png" />
                         <AvatarFallback>{person.name[0]}</AvatarFallback>
                       </Avatar>
                       <div>
@@ -76,7 +92,7 @@ const Home = () => {
                   <CardContent className="p-4">
                     <div className="flex gap-4">
                       <Avatar>
-                        <AvatarImage src="/placeholder.svg" />
+                        <AvatarImage src="/user.png" />
                         <AvatarFallback>U</AvatarFallback>
                       </Avatar>
                       <Input placeholder="Compartilhe suas conquistas e sentimentos" />
@@ -95,11 +111,11 @@ const Home = () => {
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-3">
                           <Avatar>
-                            <AvatarImage src={post.author.avatar} />
-                            <AvatarFallback>{post.author.name[0]}</AvatarFallback>
+                            <AvatarImage src="/user.png" />
+                            <AvatarFallback>{post.nomeUsuario}</AvatarFallback>
                           </Avatar>
                           <div>
-                            <div className="font-medium">{post.author.name}</div>
+                            <div className="font-medium">{post.nomeUsuario}</div>
                           </div>
                         </div>
                         <Button variant="ghost" size="icon">
@@ -122,20 +138,22 @@ const Home = () => {
                           </svg>
                         </Button>
                       </div>
-                      <p>{post.content}</p>
-                      <Image
-                        src={post.image}
-                        alt="Post image"
-                        width={600}
-                        height={400}
-                        className="rounded-lg w-full"
-                      />
+                      <p>{post.conteudos}</p>
+                      {post.image && (
+                        <Image
+                          src={post.image.trim()}
+                          alt="Post image"
+                          width={600}
+                          height={400}
+                          className="rounded-lg w-full"
+                        />
+                      )}
                       <div className="flex items-center gap-4">
                         <Button variant="ghost" size="sm">
-                          ❤️ {post.likes}
+                          ❤️ {post.curtidas}
                         </Button>
                         <Button variant="ghost" size="sm">
-                          💬 {post.comments}
+                          💬 {post.comentarios}
                         </Button>
                       </div>
                     </CardContent>

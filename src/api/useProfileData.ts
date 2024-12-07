@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '@/contexts/auth';
+import { useRouter } from 'next/navigation';
 
 interface ProfileData {
   atleta: {
@@ -20,10 +21,17 @@ interface ProfileData {
 }
 
 export function useProfileData() {
+  const router = useRouter();
   const { user } = useContext(AuthContext);
   const [data, setData] = useState<ProfileData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
 
   useEffect(() => {
     const fetchData = async () => {

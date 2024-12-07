@@ -66,20 +66,11 @@ const Register = () => {
     if (validateForm()) {
       try {
         console.log('dados', formData)
-        const response = await axios.post('http://localhost:8080/api/auth/register', formData)
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_API}/auth/register`, formData)
         console.log('Registration successful:', response.data)
-        // toast({
-        //   title: "Conta criada com sucesso!",
-        //   description: "Você será redirecionado para a página inicial.",
-        // })
         router.push('/')
       } catch (error) {
         console.error('Registration failed:', error)
-        // toast({
-        //   title: "Erro ao criar conta",
-        //   description: "Por favor, tente novamente mais tarde.",
-        //   variant: "destructive",
-        // })
       }
     }
   }
